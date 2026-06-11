@@ -3,6 +3,9 @@
  * แสดง: Search input, Status filter dropdown, RiskLevel filter dropdown
  * Logic: ฟังก์ชัน filter จะ combine ทั้ง search และ filter dropdowns ด้วย AND logic
  */
+import { useState } from 'react';
+import Butterfly from './Butterfly';
+
 const FilterBar = ({
   searchTerm,
   onSearchChange,
@@ -11,6 +14,33 @@ const FilterBar = ({
   selectedRiskLevel,
   onRiskLevelChange,
 }) => {
+  const [butterflies, setButterflies] = useState([]);
+
+  const handleReset = (e) => {
+    // รับพิกัดของเมาส์
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // สร้าง butterflies 8 ตัว
+    const newButterflies = Array.from({ length: 8 }, (_, i) => ({
+      id: Date.now() + i,
+      startX: mouseX,
+      startY: mouseY,
+      delay: i * 0.1, // 0.1s ช่วง เพื่อให้ slow motion effect
+    }));
+
+    setButterflies(prev => [...prev, ...newButterflies]);
+
+    // ลบ butterflies หลังจาก 4 วินาที
+    setTimeout(() => {
+      setButterflies(prev => prev.filter(b => !newButterflies.find(nb => nb.id === b.id)));
+    }, 4000);
+
+    // Reset filters
+    onSearchChange('');
+    onStatusChange('');
+    onRiskLevelChange('');
+  };
   return (
     <div className="bg-slate-800 p-6 rounded-xl shadow-lg mb-6 border border-slate-700">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -66,17 +96,24 @@ const FilterBar = ({
         {/* Reset Button */}
         <div className="flex items-end">
           <button
-            onClick={() => {
-              onSearchChange('');
-              onStatusChange('');
-              onRiskLevelChange('');
-            }}
+            onClick={handleReset}
             className="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition"
           >
             Reset Filters
           </button>
         </div>
       </div>
+
+      {/* Butterflies */}
+      {butterflies.map(butterfly => (
+        <Butterfly
+          key={butterfly.id}
+          id={butterfly.id}
+          startX={butterfly.startX}
+          startY={butterfly.startY}
+          delay={butterfly.delay}
+        />
+      ))}
     </div>
   );
 };

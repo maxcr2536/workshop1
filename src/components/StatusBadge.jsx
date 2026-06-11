@@ -17,7 +17,7 @@ export const StatusBadge = ({ value, type = 'status' }) => {
   }
 
   return (
-    <span className={`px-3 py-1 rounded-full text-sm font-medium ${colorClass}`}>
+    <span className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap inline-block ${colorClass}`}>
       {value}
     </span>
   );

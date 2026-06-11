@@ -26,11 +26,11 @@ const CustomerTable = ({ customers, selectedCustomer, onSelectCustomer }) => {
               <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-24">Code</th>
               <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap">Name</th>
               <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Group</th>
-              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Status</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-28">Status</th>
               <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Owner</th>
               <th className="px-3 py-3 text-right text-xs font-semibold text-red-400 whitespace-nowrap w-32">Balance</th>
-              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-24">Payment</th>
-              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-16">Risk</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-28">Payment</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Risk</th>
             </tr>
           </thead>
           <tbody>

@@ -20,17 +20,17 @@ const CustomerTable = ({ customers, selectedCustomer, onSelectCustomer }) => {
     <div className="bg-slate-800 rounded-xl shadow-lg overflow-hidden border border-slate-700">
       {/* Table wrapper กับ horizontal scroll บน tablet */}
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full border-collapse" style={{ tableLayout: 'auto', minWidth: '900px' }}>
           <thead>
             <tr className="bg-slate-900 border-b-2 border-slate-600">
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Code</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Name</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Group</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Status</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Owner</th>
-              <th className="px-6 py-3 text-right text-sm font-semibold text-red-400">Balance</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Payment</th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-red-400">Risk</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-24">Code</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap">Name</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Group</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Status</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-20">Owner</th>
+              <th className="px-3 py-3 text-right text-xs font-semibold text-red-400 whitespace-nowrap w-32">Balance</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-24">Payment</th>
+              <th className="px-3 py-3 text-left text-xs font-semibold text-red-400 whitespace-nowrap w-16">Risk</th>
             </tr>
           </thead>
           <tbody>
@@ -44,20 +44,20 @@ const CustomerTable = ({ customers, selectedCustomer, onSelectCustomer }) => {
                     : 'hover:bg-slate-700'
                 }`}
               >
-                <td className="px-6 py-3 text-sm font-medium text-white">{customer.customerCode}</td>
-                <td className="px-6 py-3 text-sm text-gray-200">{customer.customerName}</td>
-                <td className="px-6 py-3 text-sm text-gray-300">{customer.customerGroup}</td>
-                <td className="px-6 py-3">
+                <td className="px-3 py-2 text-xs font-medium text-white whitespace-nowrap">{customer.customerCode}</td>
+                <td className="px-3 py-2 text-xs text-gray-200 truncate">{customer.customerName}</td>
+                <td className="px-3 py-2 text-xs text-gray-300 whitespace-nowrap">{customer.customerGroup}</td>
+                <td className="px-3 py-2 text-xs">
                   <StatusBadge value={customer.status} type="status" />
                 </td>
-                <td className="px-6 py-3 text-sm text-gray-200">{customer.marketingOwner}</td>
-                <td className="px-6 py-3 text-sm text-right font-semibold text-red-400">
+                <td className="px-3 py-2 text-xs text-gray-200 whitespace-nowrap">{customer.marketingOwner}</td>
+                <td className="px-3 py-2 text-xs text-right font-semibold text-red-400 whitespace-nowrap">
                   {formatCurrency(customer.outstandingBalance)}
                 </td>
-                <td className="px-6 py-3">
+                <td className="px-3 py-2 text-xs">
                   <StatusBadge value={customer.paymentStatus} type="payment" />
                 </td>
-                <td className="px-6 py-3">
+                <td className="px-3 py-2 text-xs">
                   <StatusBadge value={customer.riskLevel} type="risk" />
                 </td>
               </tr>
